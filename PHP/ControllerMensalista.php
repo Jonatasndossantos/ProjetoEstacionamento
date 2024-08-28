@@ -14,6 +14,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Entrada Mensalista</title>
     <link rel="stylesheet" href="../css/estilo.css">
+
+    <link rel="stylesheet" href="../src/style.css"> 
 </head>
 <body>
     
@@ -27,61 +29,83 @@
             </ul>
         </nav>
     </header>
+    <div class="buttons">
+        <button id="toggle" class="button"> <img src="../img/dark.png" alt="lua" width="50"></button>
+        <button id="refresh" class="button">refresh</button>
+    </div>  
 
-    <form method="POST">
-        <label>Nome:</label>
-        <input type="text" id="nome" name="nome"><br><br>
+    <div class="conteudo">
+        <div class="informacoes ativa">
+            <ul>
+                <li>Nome</li>
+            </ul>
+        </div>
 
-        <label>Endereço:</label>
-        <input type="text" id="endereco" name="endereco"><br><br>
-        
-        <label>Telefone:</label>
-        <input type="text" id="telefone" name="telefone"><br><br>
 
-        <label>Data de Nascimento:</label>
-        <input type="date" id="dtNascimento" name="dtNascimento"><br><br>
-       
-        <label>Carro:</label>
-        <input type="text" id="carro" name="carro"><br><br>
-       
-        <label>Placa:</label>
-        <input type="text" id="placa" name="placa"><br><br>
-       
-        <label>Cor:</label>
-        <input type="text" id="cor" name="cor"><br><br>
-       
-        <button>Cadastrar
-            <?php
-              try{
-                $nome         = $_POST['nome'];
-                $endereco     = $_POST['endereco'];
-                $telefone     = $_POST['telefone'];
-                $dtNascimento = $_POST['dtNascimento'];
-                $carro        = $_POST['carro'];
-                $placa        = $_POST['placa'];
-                $cor          = $_POST['cor'];
+
+        <div class="informacoes">
+            <form method="POST">
+                <label>Nome:</label>
+                <input type="text" id="nome" name="nome"><br><br>
+
+                <label>Endereço:</label>
+                <input type="text" id="endereco" name="endereco"><br><br>
                 
-                $mensalista = new Mensalista($nome,
-                                             $endereco, 
-                                             $telefone, 
-                                             $dtNascimento,
-                                             $carro,
-                                             $placa,
-                                             $cor,
-                                      );
-              }catch(Exception $erro){
-                echo $erro;
-              }//fim try
-            ?>
-        </button><br><br>
-        <?php
-        
-        echo $mensalista->imprimir();
+                <label>Telefone:</label>
+                <input type="text" id="telefone" name="telefone"><br><br>
 
-        session_start();
-            $_SESSION["Mensalista"] = $mensalista;
-        
-        ?>
-    </form>
+                <label>Data de Nascimento:</label>
+                <input type="date" id="dtNascimento" name="dtNascimento"><br><br>
+            
+                <label>Carro:</label>
+                <input type="text" id="carro" name="carro"><br><br>
+            
+                <label>Placa:</label>
+                <input type="text" id="placa" name="placa"><br><br>
+            
+                <label>Cor:</label>
+                <input type="text" id="cor" name="cor"><br><br>
+            
+                    
+            </form>
+                    
+            <button class="botao selecionado">
+                cadastrar
+            </button>
+
+            <button class="botao">Cadastrar
+                <?php
+                    session_start();
+                    try{ 
+                        $_SESSION['nome']         = $_POST['nome'];
+                        $_SESSION['endereco']     = $_POST['endereco'];
+                        $_SESSION['telefone']     = $_POST['telefone'];
+                        $_SESSION['dtNascimento'] = $_POST['dtNascimento'];
+                        $_SESSION['carro']        = $_POST['carro'];
+                        $_SESSION['placa']        = $_POST['placa'];
+                        $_SESSION['cor']          = $_POST['cor'];
+                        
+                        $mensalista = new Mensalista($_POST['nome'],
+                                                    $_POST['endereco'],
+                                                    $_POST['telefone'],
+                                                    $_POST['dtNascimento'],
+                                                    $_POST['carro'],
+                                                    $_POST['placa'],
+                                                    $_POST['cor'],  
+                    );
+                    
+                    }catch(Exception $erro){
+                        echo $erro;
+                    }//fim do try_catch
+                ?>
+
+            </button><br><br>
+
+
+        </div>
+    </div>
+    <script src="../src/script.js"></script>
+
+    <script src="../js/index.js"></script>
 </body>
 </html>
