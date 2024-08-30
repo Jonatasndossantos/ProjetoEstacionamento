@@ -7,14 +7,14 @@
 
     Class Funcionario extends Pessoa{
         protected string $cargo;
-        protected float $salario;
+        protected string $salario;
 
         public function __construct(
             string $nome,
             string $telefone,
             string $endereco,
             string $cargo,
-            float $salario,
+            string $salario,
         ){
             parent::__construct(
                                 $nome,

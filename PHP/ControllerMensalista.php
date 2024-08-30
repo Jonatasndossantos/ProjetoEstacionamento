@@ -22,7 +22,7 @@
     <header>
         <nav>
             <ul>
-                <a href="../index.php">Home.php</a>
+                <a href="../index.html">Home</a>
                 <a href="ControllerCliente.php"><li>ControllerCliente.php</li></a>
                 <a href="ControllerFuncionario.php"><li>ControllerFuncionari..&gt;</li></a>
                 <a href="ControllerMensalista.php"><li>ControllerMensalista..&gt;</li></a>
@@ -34,16 +34,6 @@
         <button id="refresh" class="button">refresh</button>
     </div>  
 
-    <div class="conteudo">
-        <div class="informacoes ativa">
-            <ul>
-                <li>Nome</li>
-            </ul>
-        </div>
-
-
-
-        <div class="informacoes">
             <form method="POST">
                 <label>Nome:</label>
                 <input type="text" id="nome" name="nome"><br><br>
@@ -65,45 +55,31 @@
             
                 <label>Cor:</label>
                 <input type="text" id="cor" name="cor"><br><br>
-            
-                    
-            </form>
-                    
-            <button class="botao selecionado">
-                cadastrar
-            </button>
-
-            <button class="botao">Cadastrar
-                <?php
-                    session_start();
-                    try{ 
-                        $_SESSION['nome']         = $_POST['nome'];
-                        $_SESSION['endereco']     = $_POST['endereco'];
-                        $_SESSION['telefone']     = $_POST['telefone'];
-                        $_SESSION['dtNascimento'] = $_POST['dtNascimento'];
-                        $_SESSION['carro']        = $_POST['carro'];
-                        $_SESSION['placa']        = $_POST['placa'];
-                        $_SESSION['cor']          = $_POST['cor'];
-                        
-                        $mensalista = new Mensalista($_POST['nome'],
-                                                    $_POST['endereco'],
-                                                    $_POST['telefone'],
-                                                    $_POST['dtNascimento'],
-                                                    $_POST['carro'],
-                                                    $_POST['placa'],
-                                                    $_POST['cor'],  
-                    );
-                    
-                    }catch(Exception $erro){
-                        echo $erro;
-                    }//fim do try_catch
+                
+                <button class="botao">Cadastrar
+                    <?php
+                session_start();
+                try{ 
+                    $_SESSION['nome']         = $_POST['nome'];
+                    $_SESSION['endereco']     = $_POST['endereco'];
+                    $_SESSION['telefone']     = $_POST['telefone'];
+                    $_SESSION['dtNascimento'] = $_POST['dtNascimento'];
+                    $_SESSION['carro']        = $_POST['carro'];
+                    $_SESSION['placa']        = $_POST['placa'];
+                    $_SESSION['cor']          = $_POST['cor'];
+                }catch(Exception $erro){
+                    echo $erro;
+                }//fim do try_catch
+                
                 ?>
 
-            </button><br><br>
-
+                </button><br><br>
+        </form>
+        <button>
+            <a href="imprimirM.php">Imprimir</a>
+        </button>
 
         </div>
-    </div>
     <script src="../src/script.js"></script>
 
     <script src="../js/index.js"></script>

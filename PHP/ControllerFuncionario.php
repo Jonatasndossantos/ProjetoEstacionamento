@@ -22,7 +22,7 @@
     <header>
         <nav>
             <ul>
-                <a href="../index.php">Home.php</a>
+                <a href="../index.html">Home.html</a>
                 <a href="ControllerCliente.php"><li>ControllerCliente.php</li></a>
                 <a href="ControllerFuncionario.php"><li>ControllerFuncionari..&gt;</li></a>
                 <a href="ControllerMensalista.php"><li>ControllerMensalista..&gt;</li></a>
